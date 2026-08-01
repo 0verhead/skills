@@ -78,51 +78,6 @@ After installation, run this once in each project that will use the tracker-awar
 
 It records the project's issue-tracker workflow, optional triage labels, and domain-document layout under `docs/agents/`.
 
-## Local customizations
+## License
 
-### `code-review`
-
-The upstream standards-and-spec review is extended with:
-
-- Fowler's `Lazy Element` smell.
-- An Evans/Vernon-inspired story group.
-- `Untold Story` and `Scattered Story` findings.
-- Standards-subagent instructions that apply the story group during review.
-
-### `codebase-design`
-
-The upstream deep-module vocabulary is extended with:
-
-- `Arrangement`, `Story`, and `Discoverability`.
-- Guidance for module naming and nesting.
-- The story and concatenation tests in [`STORYTELLING.md`](./skills/engineering/codebase-design/STORYTELLING.md).
-
-## Structure
-
-```text
-skills/
-  engineering/
-    code-review/
-    codebase-design/
-    domain-modeling/
-    grill-with-docs/
-    improve-codebase-architecture/
-    prototype/
-    research/
-    setup-project-skills/
-    tdd/
-    to-spec/
-    to-tickets/
-    wayfinder/
-  productivity/
-    grill-me/
-    grilling/
-```
-
-Each skill is installed as a complete directory so its relative references and supporting documents remain intact.
-
-## Upstream and license
-
-The initial curated subset is derived from [`mattpocock/skills`](https://github.com/mattpocock/skills) at commit [`2ab958093e83e0ec752e6c1c5932da465bf23e0c`](https://github.com/mattpocock/skills/commit/2ab958093e83e0ec752e6c1c5932da465bf23e0c).
-
-The upstream and modified skill files are distributed under the MIT License. See [LICENSE](./LICENSE) and [NOTICE.md](./NOTICE.md).
+MIT. See [LICENSE](./LICENSE) and [NOTICE.md](./NOTICE.md).
