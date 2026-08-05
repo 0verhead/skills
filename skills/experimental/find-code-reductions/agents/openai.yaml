@@ -1,0 +1,5 @@
+interface:
+  display_name: "Find Code Reductions"
+  short_description: "Find code, dependency, and test ownership to remove"
+policy:
+  allow_implicit_invocation: false

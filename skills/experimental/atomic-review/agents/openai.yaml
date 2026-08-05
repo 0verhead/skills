@@ -1,0 +1,3 @@
+interface:
+  display_name: "Atomic Review"
+  short_description: "Verify large changes through isolated reviewers"

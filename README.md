@@ -26,6 +26,11 @@ This repository keeps the structure and installation conventions of [Matt Pocock
 - [`prototype`](./skills/engineering/prototype/SKILL.md)
 - [`setup-project-skills`](./skills/engineering/setup-project-skills/SKILL.md)
 
+### Experimental skills
+
+- [`find-code-reductions`](./skills/experimental/find-code-reductions/SKILL.md) — find code, interfaces, dependencies, ceremony, and tests the repository can stop owning.
+- [`atomic-review`](./skills/experimental/atomic-review/SKILL.md) — verify large change sets through isolated reviewers and lead adjudication.
+
 Upstream uses the spelling `domain-modeling`.
 
 ## Installation
