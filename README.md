@@ -15,6 +15,8 @@ This repository keeps the structure and installation conventions of [Matt Pocock
 - [`tdd`](./skills/engineering/tdd/SKILL.md) — build in red-green-refactor slices.
 - [`to-spec`](./skills/engineering/to-spec/SKILL.md) — turn the current conversation into a specification.
 - [`to-tickets`](./skills/engineering/to-tickets/SKILL.md) — break a plan or specification into tracer-bullet tickets.
+- [`implement`](./skills/engineering/implement/SKILL.md) — build one ticket or a small specification test-first, review it, and commit.
+- [`implement-spec`](./skills/engineering/implement-spec/SKILL.md) — build a whole ticketed specification on an integration branch through parallel subagents.
 - [`code-review`](./skills/engineering/code-review/SKILL.md) — review a diff against repository standards and its originating specification.
 
 ### Supporting skills
