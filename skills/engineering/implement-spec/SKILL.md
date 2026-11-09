@@ -35,9 +35,9 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 
 7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch.
 
-8. Changing the code changes the model, so read each finding as a symptom: group them by cause and seam, within and across rounds. A finding holds when fixing it improves the code. Fix the cause in the model, not the lines, even if it means starting that part over. Take the shape from the model and the decisions already made (spec, ADRs, earlier rounds), never from the fixes so far: would you build it this way today?
+8. Read findings as symptoms: group them by cause and seam, within and across rounds. A finding holds when fixing it improves the code. Fix the findings that hold at their cause, not their lines, in a single **implementer subagent**, then review the whole branch again until a round has none that hold. A finding that recurs across changes is a missing standard: propose it for the standards the reviewers read.
 
-9. Fix the findings that hold in a single **implementer subagent**, then review the whole branch again until a round has none that hold.
+9. Stop and put the approach to the user when a round flags an area an earlier round flagged, and in any case by the third round. Changing the code changes the model, so take the shape from the model and the decisions already made (spec, ADRs, earlier rounds), never from the fixes so far. Would you build it this way today? One concept, one home; one rule, one place to change. If not, reshape it, even if it means starting over.
 
 10. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
 
