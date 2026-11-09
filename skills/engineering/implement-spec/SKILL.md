@@ -33,7 +33,7 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** to work on the new tickets. This allows for maximum concurrency.
 
-7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Findings or fixes that keep landing in one area are a shearing pattern: find the conceptual contour that explains it. If you wouldn't build that part in this shape from scratch, fix the model, not the lines: make the change easy, then make the easy change. Check each fix against decisions already made (spec, ADRs, earlier rounds), since reviewers see only the diff. Fix the findings that hold in a single **implementer subagent**, then review the whole branch again until a round has none that hold.
+7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Changing the code changes the model, so read each finding as a symptom: group them by cause and seam, within and across rounds. A finding holds when fixing it improves the code. Fix the cause in the model, not the lines, even if it means starting that part over. Take the shape from the model and the decisions already made (spec, ADRs, earlier rounds), never from the fixes so far: would you build it this way today? Fix the findings that hold in a single **implementer subagent**, then review the whole branch again until a round has none that hold.
 
 8. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
 
