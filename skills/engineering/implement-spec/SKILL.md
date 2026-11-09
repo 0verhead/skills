@@ -33,7 +33,7 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** to work on the new tickets. This allows for maximum concurrency.
 
-7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Fix all issues raised by the code review in a single **implementer subagent**.
+7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Read the design before fixing: findings that recur in one area, within a round or across rounds, are shearing patterns pointing at a conceptual contour the code doesn't follow yet. If you wouldn't build the change in this shape from scratch, fix the model, not the lines: make the change easy, then make the easy change. Check each fix against approaches already rejected, since reviewers see only the diff. Then fix the issues in a single **implementer subagent**.
 
 8. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
 
