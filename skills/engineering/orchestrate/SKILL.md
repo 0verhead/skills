@@ -2,7 +2,7 @@
 name: orchestrate
 description: "Run the result of /to-spec and /to-tickets with one linked session and one PR for each ticket, each on /implement."
 disable-model-invocation: true
-argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [verifier=human|model|none] [parallel=n]"
+argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [verifier=model|human|none] [parallel=n]"
 ---
 
 You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
@@ -32,9 +32,8 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 2. Read the run's settings from the arguments the user passed, and ask for whatever they leave out, in one round of questions:
    - `designer`, `implementer` and `reviewer`: the model in each seat;
+   - `verifier`: optional, a model, `human` or `none`;
    - `parallel`: how many ticket sessions may run at once.
-
-   `verifier` is optional and defaults to `human`. It can also be a model or `none`.
 
    The implementer runs the ticket sessions, the reviewer runs the review inside each of them, and the designer runs the sessions that settle a design or build a prototype. The verifier checks a ticket's result in the running system. A model does that for the ticket session before the PR opens, and a human does it on the open PR.
 
