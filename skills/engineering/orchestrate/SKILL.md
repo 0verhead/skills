@@ -16,12 +16,13 @@ An **open question** is anything the spec, the tickets and the decisions already
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. The answer goes on your list, so the user can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
 3. The **user** gets the decisions that are left, with the session's recommendation and yours.
-4. **Planning** gets a question too large for one answer. Hold the sessions it touches and call the Skill tool twice, for `grilling` and `domain-modeling`, so that the ADRs and the glossary keep up with the decisions. Where the question needs a design or a prototype, start a designer session. The user signs off the design or the prototype's verdict, and it goes on the ticket it settles. Then ask the user to run `/to-spec` and `/to-tickets`, and have a subagent with a fresh context window check the spec, the tickets and the docs against the decisions before those sessions continue.
+4. **Planning** gets a question too large for one answer. Hold the sessions it touches. Where the question needs a design or a prototype, start a designer session. The user signs off the design or the prototype's verdict, and it goes on the ticket it settles. Where the spec or the tickets have to change, read [PLANNING.md](PLANNING.md) and follow it before those sessions continue.
 
 Write every answer where the next session will read it: the ticket, the spec or the code, and the glossary or an ADR when `domain-modeling` calls for one.
 
-What answers no open question goes into the **run notes**, one file outside the repo that every session reads and adds to:
+What answers no open question goes into the **run notes**, one file outside the repo. Every session reads all of it but your list, and adds what it learns:
 
+- the run's settings and what each seat does;
 - what the run has learned;
 - the rules the user added mid-run, in their words. Each also goes to every session in flight and into every later brief;
 - your list for the user, of what waits on them and what you answered without them. Show it whenever you report.
@@ -43,7 +44,7 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same area of the code queue behind each other.
 
-4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket, the docs and the run notes. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, which model reviews, and who verifies and how. It ends on the same five instructions every time:
+4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket, the docs and the run notes. The brief adds what the session cannot find there: what else is in flight and where it overlaps. It ends on the same five instructions every time:
    - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
    - fix a review finding when it names a defect inside the ticket, drop the nit-picks, and report a finding that holds but lies outside the ticket as a follow-up;
    - put every open question to the orchestrator as rung 1 describes, also wherever `implement` says to put something to the user;
