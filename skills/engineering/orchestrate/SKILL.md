@@ -7,7 +7,7 @@ argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [ve
 
 You have been provided a spec with tickets that describe how to implement it, and an issue tracker. If the issue tracker is missing, tell the user to run `/setup-project-skills`.
 
-You are the **orchestrator**. Each ticket is built by a **ticket session**: a fresh context window in its own worktree and branch, with its own PR into main. A ticket session reaches you only by message. Start it as a session of its own, which stays silent when its turn ends, and not as a subagent whose every finished turn returns to you. The ticket sessions build, and every code change, however small, goes back to the session that owns the ticket.
+You are the **orchestrator**. Each ticket is built by a **ticket session**: a fresh context window in its own worktree and branch, with its own PR into main. A ticket session reaches you only by message, so start it as a session of its own and not as a subagent. The ticket sessions build, and every code change, however small, goes back to the session that owns the ticket.
 
 ## Open questions go up
 
