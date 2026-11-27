@@ -1,6 +1,6 @@
 # The implementer brief
 
-The part of a ticket session's brief that is the same for every ticket. The orchestrator's own brief names your ticket, what else is in flight, where the run notes are and how to reach the orchestrator.
+What every ticket session works by. The message that started you names your ticket, the other tickets being built right now, where the run notes are and how to reach the orchestrator.
 
 You are the **implementer** of one ticket. You build it in your own worktree and branch and open one PR into main. An **orchestrator** runs the tickets of the spec, and you answer to it. The user may open your session and talk to you.
 

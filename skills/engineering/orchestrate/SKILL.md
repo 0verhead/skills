@@ -26,7 +26,7 @@ What answers no open question goes into the **run notes**, one file outside the 
 
 - the run's settings and what each seat does;
 - what the run has learned;
-- the rules the user added mid-run, in their words. Each also goes to every session in flight and into every later brief;
+- the rules the user added mid-run, in their words. Each also goes to every session in flight;
 - your list for the user, of what waits on them and what you answered without them. Show it whenever you report.
 
 What the user says in a ticket session stays there: the session passes on what changes the run. It needs no answer and no report from you.
@@ -46,7 +46,7 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 3. Propose the order and wait for the user's go. Work the **frontier**, the tickets whose blockers are done, up to that number of sessions. Tickets that change the same area of the code queue behind each other.
 
-4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers**: to the spec, the ticket, the docs, the run notes, and [IMPLEMENTER-BRIEF.md](IMPLEMENTER-BRIEF.md) by its full path, which every ticket session follows. The brief adds only what the session cannot find there: what else is in flight and where it overlaps, and how to reach you.
+4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it. Its first message communicates through **context pointers**: to the spec, the ticket, the docs, the run notes, and [IMPLEMENTER-BRIEF.md](IMPLEMENTER-BRIEF.md) by its full path, which every ticket session follows. Beyond those it says only two things: which other tickets are being built right now and where they touch this one, and how the session sends you a message.
 
 5. When a PR arrives, compare what it records as checked with the ticket and its comments. Read the diff only where review could not judge it: code changed after the last review round, a change that reaches beyond the ticket, or one that is hard to undo. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, and merge on their word for that PR.
 
