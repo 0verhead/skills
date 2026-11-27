@@ -20,9 +20,9 @@ An **open question** is anything the spec, the tickets and the decisions already
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. Tell the user what you answered, so they can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
 3. The **user** gets what is left, which is a decision, with the session's recommendation and yours.
-4. **Planning** gets a question too large for one answer. Hold the sessions it touches and call the Skill tool with `grilling`, with a designer session where the question needs a design or a prototype. Then ask the user to run `/to-spec` and `/to-tickets`, so that the spec and the tickets carry the outcome before those sessions continue.
+4. **Planning** gets a question too large for one answer. Hold the sessions it touches and call the Skill tool with `grilling`, with a designer session where the question needs a design or a prototype. Then ask the user to run `/to-spec` and `/to-tickets`, and have a subagent with a fresh context window check the spec, the tickets and the docs against the decisions before those sessions continue.
 
-Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code.
+Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code. Keep one list of what waits on the user, and show it whenever you report.
 
 When the reviews of different tickets keep flagging the same module, the open question is that module's design. Find the cause in the code and propose a ticket for it.
 
@@ -38,11 +38,11 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
 
-4. Start a ticket session for each ticket you take from the frontier, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same four instructions every time:
+4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same four instructions every time:
    - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
    - fix a review finding when it names a defect inside the ticket, drop the nit-picks, and report a finding that holds but lies outside the ticket as a follow-up;
    - put every open question to the orchestrator in one message as rung 1 describes, also wherever `implement` says to put something to the user;
-   - open one PR that closes the ticket and records what was checked, and send the orchestrator its link.
+   - check the result in the running system after the last fix, then open one PR that closes the ticket and records what was checked and seen, and send the orchestrator its link.
 
    A rule the user adds mid-run goes to every session in flight and into every later brief, in the user's words.
 
