@@ -18,11 +18,11 @@ The tickets are a **task graph** with blocking relationships between them, so th
 An **open question** is anything the spec, the tickets and the decisions already made leave unsettled: a design nobody has made, a decision the ticket never took, an area that review flags a second time, a ticket that will not fit one PR. A session builds on settled answers only. So an open question goes up to the first rung that can settle it, while work that does not depend on it carries on.
 
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
-2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. Tell the user what you answered, so they can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
+2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. The answer goes on your list, so the user can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
 3. The **user** gets what is left, which is a decision, with the session's recommendation and yours.
 4. **Planning** gets a question too large for one answer. Hold the sessions it touches and call the Skill tool with `grilling`, with a designer session where the question needs a design or a prototype. Then ask the user to run `/to-spec` and `/to-tickets`, and have a subagent with a fresh context window check the spec, the tickets and the docs against the decisions before those sessions continue.
 
-Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code. Keep one list of what waits on the user, and show it whenever you report.
+Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code. Keep one list for the user, of what waits on them and what you answered without them, and show it whenever you report.
 
 When the reviews of different tickets keep flagging the same module, the open question is that module's design. Find the cause in the code and propose a ticket for it.
 
@@ -37,7 +37,7 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
    The implementer runs the ticket sessions, the reviewer runs the review inside each of them, and the designer runs the sessions that settle a design or build a prototype. The verifier checks a ticket's result in the running system. A model does that for the ticket session before the PR opens, and a human does it on the open PR.
 
-3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
+3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other.
 
 4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, which model reviews, and who verifies. It ends on the same four instructions every time:
    - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
@@ -47,7 +47,7 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
    A rule the user adds mid-run goes to every session in flight and into every later brief, in the user's words.
 
-5. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, with a human verifier's pass on the list of what waits on them, and merge on their word for that PR.
+5. When a PR arrives, compare what it records as checked with the ticket and its comments. Read the diff only where review could not judge it: code changed after the last review round, a change that reaches beyond the ticket, or one that is hard to undo. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, with a human verifier's pass on the list of what waits on them, and merge on their word for that PR.
 
 6. After a merge, have the sessions in flight merge main into their branches, clean up the merged session's worktree, and start the tickets the merge added to the frontier.
 
