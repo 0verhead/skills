@@ -47,4 +47,4 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 7. The run is finished when every ticket is resolved the way the issue tracker closes work and every ticket session's worktree is cleaned up.
 
-After a compaction, work from the summary and keep this session's transcript as a **context pointer**. Before you act on a decision the summary only paraphrases, look up the user's words there.
+After a compaction, work from the summary and keep this session's transcript as a **context pointer**. Before you rely on something the summary only paraphrases or leaves out, look it up there: the user's words on a decision, or what the run has learned.
