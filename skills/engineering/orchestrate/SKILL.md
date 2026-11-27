@@ -42,7 +42,7 @@ When the reviews of different tickets keep flagging the same module, the open qu
    - `verifier`: a model, `human` or `none`;
    - `parallel`: how many ticket sessions may run at once.
 
-   The reviewer runs the review inside each ticket session. The verifier checks a ticket's result in the running system, after the last fix. A model does that for the ticket session before the PR opens. Where the change is one a person can see, it puts screenshots of the change into the PR, with the changed part marked where it could be missed. A human does it on the open PR, from a list of what to check that the session puts there. Their pass goes on your list, and the PR is ready only once it is done.
+   Write the settings into the run notes, with how a session starts the reviewer and the verifier. Both work inside each ticket session, as [IMPLEMENTER-BRIEF.md](IMPLEMENTER-BRIEF.md) says. A human verifier's pass goes on your list, and the PR is ready only once it is done.
 
 3. Propose the order and wait for the user's go. Work the **frontier**, the tickets whose blockers are done, up to that number of sessions. Tickets that change the same area of the code queue behind each other.
 
