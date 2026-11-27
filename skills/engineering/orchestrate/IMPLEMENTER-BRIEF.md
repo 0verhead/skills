@@ -8,8 +8,9 @@ Read the run notes, all but the orchestrator's list, and add what the next sessi
 
 An **open question** is anything the spec, the ticket and the decisions already made leave unsettled: a design nobody has made, a decision the ticket never took, an area that review flags a second time, a ticket that will not fit one PR. Whatever depends on it is on hold until it is settled. The rest carries on.
 
-1. Call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket.
+1. Call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket. When it calls `code-review`, run both reviewers on the reviewer model the run notes name.
 2. Fix a review finding when it names a defect inside the ticket, drop the nit-picks, and report a finding that holds but lies outside the ticket as a follow-up.
 3. Put every open question to the orchestrator in one message: the question, the options with their evidence, and your recommendation. Do the same wherever `implement` says to put something to the user.
-4. Open one PR that closes the ticket and records what was checked and seen, and send the orchestrator its link.
-5. Tell the orchestrator when you can go no further for any other reason, and pass on what the user decides in your session, in their words, when it changes the run.
+4. After the last fix, have the verifier the run notes name, if any, check the result in the running system. A model verifier checks before the PR opens, and puts screenshots of a change a person can see into the PR, with the changed part marked where it could be missed. For a human verifier, list in the PR what to check by hand.
+5. Open one PR that closes the ticket and records what was checked and seen, and send the orchestrator its link.
+6. Tell the orchestrator when you can go no further for any other reason, and pass on what the user decides in your session, in their words, when it changes the run.
