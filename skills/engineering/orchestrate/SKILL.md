@@ -11,12 +11,14 @@ You are the **orchestrator**. Each ticket is built by a **ticket session**: a fr
 
 ## Open questions go up
 
-An **open question** is anything the spec, the tickets and the decisions already made leave unsettled: a design nobody has made, a decision the ticket never took, an area that review flags a second time, a ticket that will not fit one PR. A session builds on settled answers only. So an open question goes up to the first rung that can settle it, while work that does not depend on it carries on.
+An **open question** is anything the spec, the tickets and the decisions already made leave unsettled: a design nobody has made, a decision the ticket never took, an area that review flags a second time, a ticket that will not fit one PR. A session builds on settled answers only. So an open question goes up to the first rung that can settle it. Whatever depends on it is on hold until then: that line of work, any session that builds on it, any ticket that needs it. The rest carries on.
 
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. The answer goes on your list, so the user can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
-3. The **user** gets the decisions that are left, with the session's recommendation and yours.
-4. **Planning** gets a question too large for one answer. Hold the sessions it touches. Where the question needs a design or a prototype, start a designer session. The user signs off the design or the prototype's verdict, and it goes on the ticket it settles. Where the spec or the tickets have to change, read [PLANNING.md](PLANNING.md) and follow it before those sessions continue.
+3. **Planning** gets what you cannot answer. Put the question on your list with the session's recommendation and yours, and suggest a planning session to the user. One waiting question is a session of one: ask it. In the session:
+   - call the Skill tool twice, for `grilling` and `domain-modeling`, and walk every question that waits;
+   - start a designer session where a question needs a design or a prototype. The user signs off the design or the verdict, and it goes on the ticket it settles;
+   - where the outcome changes the spec or the tickets, ask the user to run `/to-spec` and `/to-tickets`, and have a subagent with a fresh context window check them and the docs against the decisions before anything held continues.
 
 Write every answer where the next session will read it: the ticket, the spec or the code, and the glossary or an ADR when `domain-modeling` calls for one.
 
