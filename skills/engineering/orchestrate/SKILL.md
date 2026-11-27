@@ -1,60 +1,47 @@
 ---
 name: orchestrate
-description: Orchestrate the implementation of a spec's tickets. One linked child session per ticket runs /implement, and open questions come back to the orchestrator and the user instead of being patched over. Use after /grilling, /to-spec and /to-tickets.
+description: "Run the result of /to-spec and /to-tickets with one linked session and one PR for each ticket, each on /implement."
 disable-model-invocation: true
 ---
 
-You are the orchestrator for the implementation of the spec the user names. You do not implement. You sequence the tickets, brief one session per ticket, answer what the sessions ask, verify what comes back, keep spec, tickets and docs in step, and report to the user. The user merges, or tells you to, one pull request at a time.
+You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
 
-The spec and its tickets with blocking edges come from `/grilling`, `/to-spec` and `/to-tickets`. If one is missing, say so and stop.
+The issue tracker should have been provided to you. If not, tell the user to run `/setup-project-skills`.
 
-## Before the first session
+You are the **orchestrator**. Each ticket is built by a **ticket session**: a fresh context window in its own worktree, on its own branch, opening its own PR into main. A ticket session stays linked to you, so it can message you and the user can open it and talk to it. You sequence, brief, answer and verify. The ticket sessions build, and every code change, however small, goes back to the session that owns the ticket. The user decides, and a PR merges on their word.
 
-1. **Context.** If planning filled this conversation, write a handoff file with only what the tracker and the repo do not hold: order, rules, checkpoints, local workarounds, loose ends. Fork, compact for orchestrating, then rebuild from the sources: the handoff, the standards, the spec and every ticket with its comments, and the live state of tickets and pull requests. After any later compaction, rebuild from the session log, every user message and your replies. A summary is not the record.
-2. **Order.** Propose the order with the highest chance of success. Phases follow the blocking edges. Whatever makes later tickets checkable goes first. The smallest end-to-end proof of the core comes before anything builds on it. The riskiest ticket runs alone. At most three tickets in flight, and only one of them in a lane that shares state or files.
-3. **Checkpoints with the user.** After the first proof, before the riskiest ticket, before anything that changes stored data, and at every merge.
-4. **Ask what is not yet said.** Model and effort for implementers and for reviewers, and how hands-on checks run.
+The tickets are a **task graph** with blocking relationships between them, so there is always a **frontier** of tickets ready to start.
 
-Start nothing until the user says go.
+## Open questions go up
 
-## One session per ticket
+An **open question** is anything the spec, the tickets and the decisions already made leave unsettled. It shows up as a choice the ticket never made, an area that review flags a second time, or a ticket that will not fit one PR. So that no session guesses its way past one and then fixes symptoms round after round, the open question goes up to the first rung that can settle it, while work that does not depend on it carries on.
 
-Each ticket gets a standalone session with a fresh context, its own worktree and branch cut from the current default branch, and one pull request. The session stays linked to you. It can message you, you hear when its turn ends, and the user can open it and talk to it. An in-process subagent is not that. Use the harness's tools for starting a linked session or thread and for messaging it, and put your own session id in the brief if the harness does not.
+1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
+2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. Tell the user what you answered, so they can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
+3. The **user** gets what is left, which is a decision, with the session's recommendation and yours.
+4. **Planning** gets a question too large for one answer. Hold the sessions it touches and run `/grilling` with the user. Then ask the user to run `/to-spec` and `/to-tickets`, so that the spec and the tickets carry the outcome before those sessions continue.
 
-## The brief
+Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code.
 
-Point to the spec, the ticket and the docs, never copy them. A brief holds:
+When the reviews of different tickets keep flagging the same module, the open question is that module's design. Find the cause in the code and propose a ticket for it.
 
-- **Background.** Where the ticket sits, what is on the default branch, what builds on this ticket, who runs beside it and where they overlap, and the decisions that bind it and are not reopened.
-- **Start.** Confirm the base. Read the standards, the spec, the ticket and every ticket the brief names, with their comments. A comment is part of the contract, and a later comment overrides the body. Read them again before the pull request. Then invoke `/implement <ticket>`. The brief wins where the two differ.
-- **Review findings.**
-  - A reviewer can be wrong. Verify each finding in the code before acting on it.
-  - Drop nit-picks.
-  - Guard the scope. A finding that asks for work outside the ticket becomes a named follow-up.
-  - Findings, also across rounds, may be symptoms of one deeper issue. Fix the cause.
-  - No inertia. After each round ask how you would build this pull request today, knowing what you know now. Build it that way, even if finished work goes.
-- **Stop and ask.** Stop and message the orchestrator when a second review round flags an area again, when the work needs a decision the ticket does not make, when it would change what a person sees or what is stored beyond the ticket, when the docs and shipped behaviour contradict, or when the ticket is too large. One message: what stopped you, the options with evidence, your recommendation. Long evidence goes into a stop note in the shared notes folder. Carry on with what does not depend on the answer. Never push through.
-- **Libraries.** Use each library's documented way and align with its reference implementations. Deviate only where it cannot cover the case, and say why.
-- **Standards.** Follow the project's standards strictly. Do not add to the standards or the agent instruction files. Propose the text in the report.
-- **Delivery.** One pull request that closes the ticket. Its description records what was checked and seen, the review rounds with rejected findings and reasons, and what is unverified. Never merge. The final report starts with the pull request link.
+## Steps
 
-Say each rule once and add no process or reporting duty on top of it. When the user gives a new rule, send it to the running sessions, put it in every later brief, and save it to memory.
+1. Read the spec and the tickets, comments included, to understand the task graph.
 
-## When a session asks
+2. Propose the order and wait for the user's go. Work the frontier at most three tickets at a time, unless the user sets another number: their review is the scarce resource. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
 
-Read its note and the code first, and check both against the spec, the docs and the decisions already made.
+3. Start a ticket session for each ticket you take from the frontier, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, and which decisions bind the ticket. It ends on the same three instructions every time:
+   - invoke `/implement` on the ticket, and read the ticket's comments as part of the ticket;
+   - put every open question to the orchestrator in one message as rung 1 describes, also wherever `implement` says to put something to the user;
+   - open one PR that closes the ticket and records what was checked, and send the orchestrator its link.
 
-- **Answer yourself** when the answer follows from a decision the user already made. Tell the user what you decided and why, so they can overrule it.
-- **Take it to the user** when it changes what a person sees, what is stored, the model or the scope, or when no decision covers it. Give the session's recommendation and yours, and one question with concrete options. The session continues meanwhile with what does not depend on it. Relay the user's answer word for word, with how you read it.
-- **Facts first.** If a library's source or the way proven reference projects do it could settle the question, have a subagent study that. Bring the user only what is still theirs to decide.
-- **A recurring finding is a design flaw.** When an area or defect comes back across rounds or across tickets, stop the fixes, find the cause in the code yourself, and give it to the ticket that owns it or file a ticket for it.
-- **Larger than an answer.** Hold the affected sessions and run a `/grilling` session with the user, or a prototype or design session where it needs one. Then ask the user for `/to-spec` and `/to-tickets` to revise the spec and the tickets, close the tickets this replaces, and have a fresh reader check spec, tickets and docs against the decisions before any session continues.
-- **End the loop.** Once what remains is a judgement call, tell the session "no further round" and read that last diff yourself at the pull request.
+   A rule the user adds mid-run goes to every session in flight and into every later brief, in the user's words.
 
-A decision never lives only in chat. It goes into the ticket as a comment, the spec, a decision record, or a comment at the owning code.
+4. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session. Tell the user what is ready and what is unverified, and merge on their word for that PR.
 
-## When a pull request arrives
+5. After a merge, have the sessions in flight merge main into their branches, clean up the merged session's worktree, and start the tickets the merge added to the frontier.
 
-Read the diff, the CI result and the recorded checks yourself, against the ticket and its comments. Tell the user whether it is ready, what is unverified, and what you decided without them. Wait for their word on this pull request. After the merge, tell the sessions that build on it to bring the default branch in, have the session stop its processes, remove its worktree, and propose the tickets the merge unblocked.
+6. The run is finished when every ticket is resolved the way the issue tracker closes work and every ticket session's worktree is cleaned up.
 
-Keep one running list of what is open with the user, each point with your recommendation.
+The run outlasts your context window. After a compaction, rebuild your context from the issue tracker and this session's transcript, then act.
