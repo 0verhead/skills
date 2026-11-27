@@ -15,7 +15,7 @@ An **open question** is anything the spec, the tickets and the decisions already
 
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. The answer goes on your list, so the user can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
-3. **Planning** gets what you cannot answer. Put the question on your list with the session's recommendation and yours, and suggest a planning session to the user. One waiting question is a session of one: ask it. In the session:
+3. **Planning** gets what you cannot answer. Put the question on your list with the session's recommendation and yours, and suggest a planning session to the user. In the session, whether one question waits or many:
    - call the Skill tool twice, for `grilling` and `domain-modeling`, and walk every question that waits;
    - start a designer session where a question needs a design or a prototype. The user signs off the design or the verdict, and it goes on the ticket it settles;
    - where the outcome changes the spec or the tickets, ask the user to run `/to-spec` and `/to-tickets`, and have a subagent with a fresh context window check them and the docs against the decisions before anything held continues.
