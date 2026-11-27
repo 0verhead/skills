@@ -2,6 +2,7 @@
 name: orchestrate
 description: "Run the result of /to-spec and /to-tickets with one linked session and one PR for each ticket, each on /implement."
 disable-model-invocation: true
+argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [parallel=n]"
 ---
 
 You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
@@ -19,7 +20,7 @@ An **open question** is anything the spec, the tickets and the decisions already
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. Tell the user what you answered, so they can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
 3. The **user** gets what is left, which is a decision, with the session's recommendation and yours.
-4. **Planning** gets a question too large for one answer. Hold the sessions it touches and run `/grilling` with the user, with a designer session where the question needs a design or a prototype. Then ask the user to run `/to-spec` and `/to-tickets`, so that the spec and the tickets carry the outcome before those sessions continue.
+4. **Planning** gets a question too large for one answer. Hold the sessions it touches and call the Skill tool with `grilling`, with a designer session where the question needs a design or a prototype. Then ask the user to run `/to-spec` and `/to-tickets`, so that the spec and the tickets carry the outcome before those sessions continue.
 
 Write every answer where the next session will read it: the ticket, the spec, an ADR, or the code.
 
@@ -29,16 +30,16 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 1. Read the spec and the tickets, comments included, to understand the task graph.
 
-2. Take these from the user's prompt, and ask for whatever it leaves out, in one round of questions:
-   - which model is the **designer**, which the **implementer** and which the **reviewer**;
-   - how many ticket sessions may run in parallel.
+2. Read the run's settings from the arguments the user passed, and ask for whatever they leave out, in one round of questions:
+   - `designer`, `implementer` and `reviewer`: the model in each seat;
+   - `parallel`: how many ticket sessions may run at once.
 
    The implementer runs the ticket sessions, the reviewer runs the review inside each of them, and the designer runs the sessions that settle a design or build a prototype.
 
 3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
 
 4. Start a ticket session for each ticket you take from the frontier, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same three instructions every time:
-   - invoke `/implement` on the ticket, and read the ticket's comments as part of the ticket;
+   - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
    - put every open question to the orchestrator in one message as rung 1 describes, also wherever `implement` says to put something to the user;
    - open one PR that closes the ticket and records what was checked, and send the orchestrator its link.
 
