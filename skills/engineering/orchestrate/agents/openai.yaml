@@ -1,0 +1,5 @@
+interface:
+  display_name: "Orchestrate"
+  short_description: "Run a spec's tickets as linked /implement sessions"
+policy:
+  allow_implicit_invocation: false
