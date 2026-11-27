@@ -15,7 +15,7 @@ The tickets are a **task graph** with blocking relationships between them, so th
 
 ## Open questions go up
 
-An **open question** is anything the spec, the tickets and the decisions already made leave unsettled. It shows up as a choice the ticket never made, an area that review flags a second time, or a ticket that will not fit one PR. So that no session guesses its way past one and then fixes symptoms round after round, the open question goes up to the first rung that can settle it, while work that does not depend on it carries on.
+An **open question** is anything the spec, the tickets and the decisions already made leave unsettled: a design nobody has made, a decision the ticket never took, an area that review flags a second time, a ticket that will not fit one PR. A session builds on settled answers only. So an open question goes up to the first rung that can settle it, while work that does not depend on it carries on.
 
 1. The **ticket session** stops that line of work and sends you one message: the question, the options with their evidence, and its recommendation.
 2. **You** answer what a decision already made settles, or a fact you can look up in the code, a library's source or a proven reference project. Tell the user what you answered, so they can overrule it. When a round's remaining findings name no defect, "keep it as built, no further round" is an answer.
