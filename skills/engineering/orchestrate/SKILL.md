@@ -2,7 +2,7 @@
 name: orchestrate
 description: "Run the result of /to-spec and /to-tickets with one linked session and one PR for each ticket, each on /implement."
 disable-model-invocation: true
-argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [parallel=n]"
+argument-hint: "[spec] [designer=model] [implementer=model] [reviewer=model] [verifier=model|human|none] [parallel=n]"
 ---
 
 You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
@@ -32,21 +32,22 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 2. Read the run's settings from the arguments the user passed, and ask for whatever they leave out, in one round of questions:
    - `designer`, `implementer` and `reviewer`: the model in each seat;
+   - `verifier`: optional, a model, `human` or `none`;
    - `parallel`: how many ticket sessions may run at once.
 
-   The implementer runs the ticket sessions, the reviewer runs the review inside each of them, and the designer runs the sessions that settle a design or build a prototype.
+   The implementer runs the ticket sessions, the reviewer runs the review inside each of them, and the designer runs the sessions that settle a design or build a prototype. The verifier checks a ticket's result in the running system. A model does that for the ticket session before the PR opens, and a human does it on the open PR.
 
 3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
 
-4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same four instructions every time:
+4. Read each ticket you take from the frontier for open questions, and take them up the rungs before its session starts. Then start a ticket session for it, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, which model reviews, and who verifies. It ends on the same four instructions every time:
    - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
    - fix a review finding when it names a defect inside the ticket, drop the nit-picks, and report a finding that holds but lies outside the ticket as a follow-up;
    - put every open question to the orchestrator in one message as rung 1 describes, also wherever `implement` says to put something to the user;
-   - check the result in the running system after the last fix, then open one PR that closes the ticket and records what was checked and seen, and send the orchestrator its link.
+   - open one PR that closes the ticket and records what was checked and seen, and send the orchestrator its link. With a model as verifier, have it check the result after the last fix first. With a human verifier, list in the PR what to check by hand.
 
    A rule the user adds mid-run goes to every session in flight and into every later brief, in the user's words.
 
-5. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, and merge on their word for that PR.
+5. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, with a human verifier's pass on the list of what waits on them, and merge on their word for that PR.
 
 6. After a merge, have the sessions in flight merge main into their branches, clean up the merged session's worktree, and start the tickets the merge added to the frontier.
 
