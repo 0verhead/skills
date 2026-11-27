@@ -17,6 +17,7 @@ This repository keeps the structure and installation conventions of [Matt Pocock
 - [`to-tickets`](./skills/engineering/to-tickets/SKILL.md) — break a plan or specification into tracer-bullet tickets.
 - [`implement`](./skills/engineering/implement/SKILL.md) — build one ticket or a small specification test-first, review it, and commit.
 - [`implement-spec`](./skills/engineering/implement-spec/SKILL.md) — build a whole ticketed specification on an integration branch through parallel subagents.
+- [`orchestrate`](./skills/engineering/orchestrate/SKILL.md) — run a ticketed specification as one linked `implement` session and pull request per ticket, with open questions brought back to the orchestrator and the user.
 - [`code-review`](./skills/engineering/code-review/SKILL.md) — review a diff against repository standards and its originating specification.
 
 ### Supporting skills
