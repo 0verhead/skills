@@ -38,14 +38,15 @@ When the reviews of different tickets keep flagging the same module, the open qu
 
 3. Propose the order and wait for the user's go. Work the frontier up to that number of sessions. Tickets that change the same state queue behind each other. Name where you will check in with the user: after the first ticket that proves the approach, and before any ticket that is hard to undo.
 
-4. Start a ticket session for each ticket you take from the frontier, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same three instructions every time:
+4. Start a ticket session for each ticket you take from the frontier, with a **brief**. Communicate through **context pointers** to the spec, the ticket and the docs. The brief adds what the session cannot find there: what else is in flight and where it overlaps, which decisions bind the ticket, and which model reviews. It ends on the same four instructions every time:
    - call the Skill tool with `implement` for the ticket, and read the ticket's comments as part of the ticket;
+   - fix a review finding when it names a defect inside the ticket, drop the nit-picks, and report a finding that holds but lies outside the ticket as a follow-up;
    - put every open question to the orchestrator in one message as rung 1 describes, also wherever `implement` says to put something to the user;
    - open one PR that closes the ticket and records what was checked, and send the orchestrator its link.
 
    A rule the user adds mid-run goes to every session in flight and into every later brief, in the user's words.
 
-5. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session. Tell the user what is ready and what is unverified, and merge on their word for that PR.
+5. When a PR arrives, read the diff and the checks against the ticket yourself. What is not ready goes back to its session, and a follow-up worth doing becomes a ticket you propose. Tell the user what is ready and what is unverified, and merge on their word for that PR.
 
 6. After a merge, have the sessions in flight merge main into their branches, clean up the merged session's worktree, and start the tickets the merge added to the frontier.
 
